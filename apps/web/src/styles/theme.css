@@ -1,0 +1,310 @@
+@import "tailwindcss";
+
+/* 深色变体跟着 `.dark` 类走，而不是系统的 prefers-color-scheme。
+   Tailwind v4 的 `dark:` 默认编译成 `@media (prefers-color-scheme: dark)`，而本应用的
+   主题是自己用 `.dark` 类切的：不声明这一行，界面上所有 `dark:` 工具类（`dark:prose-invert`、
+   `dark:text-emerald-400` 这类共 79 组）就只认系统设置——系统是浅色、应用切到深色时，
+   深底上会留着一整套为浅底配的文字色，最浅的一批只有 2.5:1，基本看不清。 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  /* 配色取向：暖调中性底 + 陶土色强调，参考桌面端写作类工具的克制质感。
+     冷蓝灰底配高饱和靛蓝是典型的「后台模板」观感；暖白底让长时间阅读更放松，
+     强调色只在真正需要注意的地方出现。
+     所有文字色都按 WCAG AA 校过：`pnpm check:contrast` 逐元素扫六页 × 两套主题。 */
+  :root {
+    --background:        oklch(0.982 0.0045 85);
+    --foreground:        oklch(0.215 0.008 65);
+    --card:              oklch(0.997 0.0015 85);
+    --card-foreground:   oklch(0.215 0.008 65);
+    --popover:           oklch(0.997 0.0015 85);
+    --popover-foreground:oklch(0.215 0.008 65);
+    --muted:             oklch(0.955 0.006 85);
+    --muted-foreground:  oklch(0.505 0.012 65);
+    --secondary:         oklch(0.955 0.006 85);
+    --secondary-foreground: oklch(0.215 0.008 65);
+    --accent:            oklch(0.945 0.008 80);
+    --accent-foreground: oklch(0.215 0.008 65);
+    --border:            oklch(0.905 0.008 80);
+    --input:             oklch(0.89  0.009 80);
+    /* 陶土色。L 压到 0.52：它最常见的用法是「淡色底 + 同色文字」（bg-primary/10 +
+       text-primary），淡底会吃掉半档对比度，再亮就不到 4.5:1。 */
+    --primary:           oklch(0.52  0.135 40);
+    --primary-foreground:oklch(0.99  0.003 85);
+    /* 三个强调色在浅色模式下要压暗：它们主要当**文字色**用（text-accent-insight
+       这类共 90 多处），L≈0.5 时白底 5.5:1、同色淡底上也有 4.5:1。 */
+    --accent-ai:         oklch(0.48  0.10  220);   /* 青蓝 —— AI 状态 */
+    --accent-insight:    oklch(0.48  0.12  150);   /* 绿 —— 经验生效 */
+    --accent-warn:       oklch(0.515 0.14  70);
+    --destructive:       oklch(0.50  0.19  27);
+    --destructive-foreground: oklch(0.99 0 0);
+    --ring:              oklch(0.52  0.135 40);
+    --radius:            0.75rem;
+
+    --sidebar:           oklch(0.963 0.0065 85);
+    --sidebar-foreground:oklch(0.215 0.008 65);
+    --sidebar-border:    oklch(0.905 0.008 80);
+    --sidebar-primary:   oklch(0.52  0.135 40);
+    --sidebar-primary-foreground: oklch(0.99 0.003 85);
+    --sidebar-accent:    oklch(0.925 0.009 80);
+    --sidebar-accent-foreground: oklch(0.215 0.008 65);
+    --sidebar-ring:      oklch(0.52  0.135 40);
+
+    --shadow-card: 0 1px 2px oklch(0.3 0.02 60 / 0.04), 0 1px 1px oklch(0.3 0.02 60 / 0.03);
+    --shadow-float: 0 12px 32px -12px oklch(0.3 0.03 60 / 0.18), 0 2px 6px oklch(0.3 0.02 60 / 0.06);
+  }
+
+  .dark {
+    --background:        oklch(0.255 0.004 80);
+    --foreground:        oklch(0.948 0.006 85);
+    --card:              oklch(0.288 0.004 80);
+    --card-foreground:   oklch(0.948 0.006 85);
+    --popover:           oklch(0.288 0.004 80);
+    --popover-foreground:oklch(0.948 0.006 85);
+    --muted:             oklch(0.315 0.005 80);
+    --muted-foreground:  oklch(0.76  0.01  80);
+    --secondary:         oklch(0.315 0.005 80);
+    --secondary-foreground: oklch(0.948 0.006 85);
+    --accent:            oklch(0.33  0.006 80);
+    --accent-foreground: oklch(0.948 0.006 85);
+    --border:            oklch(0.98  0.01 85 / 11%);
+    --input:             oklch(0.98  0.01 85 / 14%);
+    /* 深色下陶土色要提亮当文字用；实心底上改用深色前景，白字在亮陶土上不到 4.5:1。 */
+    --primary:           oklch(0.735 0.12  42);
+    --primary-foreground:oklch(0.20  0.02  40);
+    --accent-ai:         oklch(0.78  0.10  220);
+    --accent-insight:    oklch(0.77  0.14  150);
+    --accent-warn:       oklch(0.80  0.13  75);
+    --destructive:       oklch(0.73  0.17  27);
+    --destructive-foreground: oklch(0.18 0.01 30);
+    --ring:              oklch(0.72  0.12  42);
+
+    --sidebar:           oklch(0.225 0.004 80);
+    --sidebar-foreground:oklch(0.948 0.006 85);
+    --sidebar-border:    oklch(0.98  0.01 85 / 9%);
+    --sidebar-primary:   oklch(0.72  0.12  42);
+    --sidebar-primary-foreground: oklch(0.20 0.02 40);
+    --sidebar-accent:    oklch(0.30  0.005 80);
+    --sidebar-accent-foreground: oklch(0.948 0.006 85);
+    --sidebar-ring:      oklch(0.72  0.12  42);
+
+    --shadow-card: 0 1px 2px oklch(0 0 0 / 0.25);
+    --shadow-float: 0 16px 40px -12px oklch(0 0 0 / 0.55), 0 2px 8px oklch(0 0 0 / 0.3);
+  }
+
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    line-height: 1.625;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 200ms cubic-bezier(0.32, 0.72, 0, 1),
+                color 200ms cubic-bezier(0.32, 0.72, 0, 1),
+                border-color 200ms cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card:       var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover:    var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-muted:      var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-secondary:  var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent:     var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border:     var(--border);
+  --color-input:      var(--input);
+  --color-primary:    var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent-ai:  var(--accent-ai);
+  --color-accent-insight: var(--accent-insight);
+  --color-accent-warn: var(--accent-warn);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-ring:       var(--ring);
+  --color-sidebar:    var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  --radius-lg:        var(--radius);
+  --radius-md:        calc(var(--radius) - 2px);
+  --radius-sm:        calc(var(--radius) - 4px);
+  --font-sans:        "Geist Variable", "Inter", -apple-system, "PingFang SC", "Segoe UI Variable Text", "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", system-ui, sans-serif;
+  --font-mono:        "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+  /* 标题用衬线：界面正文保持无衬线的清晰，页面标题与欢迎语换成衬线，层级一眼可辨 */
+  --font-serif:       "Tiempos Headline", "Source Han Serif SC", "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+}
+
+/* Custom scrollbar for desktop app feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in oklab, var(--foreground) 14%, transparent);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklab, var(--foreground) 28%, transparent);
+}
+
+/* Streaming cursor pulse */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.streaming-cursor::after {
+  content: '▋';
+  display: inline-block;
+  color: var(--primary);
+  margin-left: 2px;
+  animation: cursor-blink 0.8s infinite;
+  vertical-align: baseline;
+}
+
+/* Micro-interaction & Glow Polish */
+.card-hover-lift {
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* 注意别写成 `oklch(var(--accent-ai) / 20%)`：这些变量存的已经是完整的 oklch() 颜色，
+   套进去展开成 `oklch(oklch(...) / 20%)`，整条声明会被浏览器直接丢掉——发光效果
+   一点都不会出现，且控制台不报错，最难查。加透明度统一走 color-mix。 */
+.glow-subtle-ai {
+  box-shadow: 0 0 20px -4px color-mix(in oklab, var(--accent-ai) 20%, transparent);
+}
+
+.glow-subtle-insight {
+  box-shadow: 0 0 20px -4px color-mix(in oklab, var(--accent-insight) 20%, transparent);
+}
+
+.glow-subtle-primary {
+  box-shadow: 0 0 24px -6px color-mix(in oklab, var(--primary) 22%, transparent);
+}
+
+.workspace-heading [data-slot="tabs"] { min-width: 0; max-width: 100%; }
+.workspace-heading [data-slot="tabs-list"] { max-width: 100%; justify-content: flex-start; overflow-x: auto; }
+.workspace-heading [data-slot="tabs-trigger"] { flex-shrink: 0; }
+
+/* Shared workspace rhythm keeps each feature aligned with the application shell. */
+.workspace-page { height: 100%; width: 100%; overflow-y: auto; overflow-x: hidden; }
+.workspace-content { max-width: 1240px; margin-inline: auto; padding: 36px 44px 56px; }
+.workspace-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; padding-bottom: 20px; }
+.app-shell { background-image: none; }
+.app-sidebar { box-shadow: none; }
+.skip-link { position: fixed; top: -64px; left: 16px; z-index: 100; border-radius: 8px; padding: 10px 16px; background: var(--primary); color: var(--primary-foreground); }
+.skip-link:focus { top: 12px; }
+::selection { background: color-mix(in oklab, var(--primary) 22%, transparent); }
+@media (max-width: 900px) {
+  .workspace-content { padding: 24px; }
+  .workspace-heading { align-items: flex-start; flex-direction: column; gap: 20px; }
+}
+@media (max-width: 600px) {
+  .workspace-content { padding: 20px 16px 32px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  .card-hover-lift:hover { transform: none; }
+}
+
+/* ---- 精修层：标题字体、卡片与浮层的统一质感 ---- */
+.font-display { font-family: var(--font-serif); font-weight: 500; letter-spacing: -0.01em; }
+.surface-card { background: var(--card); border: 1px solid var(--border); border-radius: calc(var(--radius) + 2px); box-shadow: var(--shadow-card); }
+.shadow-float { box-shadow: var(--shadow-float); }
+.hairline-b { border-bottom: 1px solid color-mix(in oklab, var(--border) 80%, transparent); }
+
+/* 侧栏里可展开的卡片列表：展开时逐项淡入，像桌面端的会话列表 */
+@keyframes list-card-in {
+  from { opacity: 0; transform: translateY(-3px); }
+  to   { opacity: 1; transform: none; }
+}
+.list-card-in > * { animation: list-card-in 220ms cubic-bezier(0.16, 1, 0.3, 1) both; }
+.list-card-in > *:nth-child(2) { animation-delay: 25ms; }
+.list-card-in > *:nth-child(3) { animation-delay: 50ms; }
+.list-card-in > *:nth-child(4) { animation-delay: 75ms; }
+.list-card-in > *:nth-child(5) { animation-delay: 100ms; }
+.list-card-in > *:nth-child(n+6) { animation-delay: 120ms; }
+
+/* 检索过程块里的「正在搜索」微光 */
+@keyframes shimmer-text {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+.shimmer-text {
+  background: linear-gradient(90deg, var(--muted-foreground) 35%, var(--foreground) 50%, var(--muted-foreground) 65%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-text 1.6s linear infinite;
+}
+
+/* ---- 平台适配 ---- */
+/* Windows：中文衬线只有宋体，在小字号标题上发虚，换回雅黑并稍加粗；
+   滚动条在 Windows 上默认很粗，Firefox 走标准属性收细。 */
+.platform-win { --font-serif: "Segoe UI Variable Display", "Segoe UI", "Microsoft YaHei UI", "Microsoft YaHei", sans-serif; }
+.platform-win .font-display { font-weight: 600; letter-spacing: 0; }
+* { scrollbar-width: thin; scrollbar-color: color-mix(in oklab, var(--foreground) 18%, transparent) transparent; }
+
+/* 手机：触控目标至少 40px，输入框字号不低于 16px（iOS 低于 16px 聚焦时会自动放大页面） */
+@media (max-width: 767px) {
+  textarea, input, select { font-size: 16px; }
+  .composer-chip { height: 2rem; }
+}
+@supports (padding: env(safe-area-inset-bottom)) {
+  .safe-bottom { padding-bottom: max(0.75rem, env(safe-area-inset-bottom)); }
+}
+
+/* 知识图谱的时间轴滑块：细轨道 + 陶土色圆钮 */
+.growth-range { -webkit-appearance: none; appearance: none; height: 18px; background: transparent; cursor: pointer; }
+.growth-range::-webkit-slider-runnable-track { height: 4px; border-radius: 999px; background: linear-gradient(to right, color-mix(in oklab, var(--primary) 55%, transparent) var(--progress, 100%), var(--muted) var(--progress, 100%)); }
+.growth-range::-moz-range-track { height: 4px; border-radius: 999px; background: linear-gradient(to right, color-mix(in oklab, var(--primary) 55%, transparent) var(--progress, 100%), var(--muted) var(--progress, 100%)); }
+.growth-range::-webkit-slider-thumb { -webkit-appearance: none; margin-top: -6px; width: 16px; height: 16px; border-radius: 999px; background: var(--primary); border: 3px solid var(--card); box-shadow: 0 1px 4px oklch(0 0 0 / 0.25); transition: transform 150ms ease; }
+.growth-range:hover::-webkit-slider-thumb, .growth-range:active::-webkit-slider-thumb { transform: scale(1.15); }
+.growth-range::-moz-range-thumb { width: 12px; height: 12px; border-radius: 999px; background: var(--primary); border: 3px solid var(--card); }
+.growth-range:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; border-radius: 999px; }
+@media (prefers-reduced-motion: reduce) {
+  .knowledge-map *, .knowledge-map *::before, .knowledge-map *::after {
+    animation: none !important;
+    transition-duration: 0s !important;
+  }
+}
+
+/* 引用依据的原句：阅读器里精确到字的高亮（CSS Custom Highlight API，不改动渲染出的 DOM） */
+::highlight(agentmem-quote) {
+  background-color: color-mix(in oklab, var(--primary) 38%, transparent);
+  color: var(--foreground);
+}

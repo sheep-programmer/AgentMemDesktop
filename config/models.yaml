@@ -1,0 +1,39 @@
+# AgentMem public defaults: local model services, no access credentials.
+# For personal settings, copy to models.local.yaml and set AGENTMEM_MODELS_CONFIG.
+providers:
+  - id: local-qwen
+    kind: llm
+    adapter: openai_compatible
+    base_url: http://localhost:11434/v1
+    model: qwen3:14b
+    api_key: ollama
+    enabled: true
+    extra:
+      timeout: 120
+  - id: local-embedding
+    kind: embedding
+    adapter: sentence_transformers
+    model: BAAI/bge-m3
+    dimension: 1024
+    device: auto
+    enabled: true
+  - id: local-reranker
+    kind: rerank
+    adapter: sentence_transformers_ce
+    model: BAAI/bge-reranker-v2-m3
+    device: auto
+    enabled: true
+roles:
+  chat: local-qwen
+  fast: local-qwen
+  distill: local-qwen
+  judge: local-qwen
+  embedding: local-embedding
+  rerank: local-reranker
+fallbacks:
+  chat: []
+  fast: []
+  distill: []
+  judge: []
+  embedding: []
+  rerank: []

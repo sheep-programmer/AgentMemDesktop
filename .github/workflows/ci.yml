@@ -1,0 +1,97 @@
+# 提交与 PR 的守门人：后端与前端各自跑完整检查。
+#
+# 后端在 3.11 与 3.12 两个版本上跑测试（`requires-python = ">=3.11"`，声明支持就要验证），
+# 但 lint 与类型检查只在 3.12 跑一遍——它们与解释器版本无关，跑两遍只是浪费时间，
+# 而 mypy 的 `python_version` 本来就钉在 3.12。
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  # 同一分支的新提交把旧任务顶掉，别让排队的任务堆起来
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: 后端 · Python ${{ matrix.python }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ["3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: 装 uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: uv.lock
+
+      - name: 装依赖
+        run: uv sync --frozen --python ${{ matrix.python }}
+
+      - name: ruff check
+        if: matrix.python == '3.12'
+        run: uv run ruff check .
+
+      - name: ruff format --check
+        if: matrix.python == '3.12'
+        run: uv run ruff format --check .
+
+      - name: mypy --strict
+        if: matrix.python == '3.12'
+        run: uv run mypy
+
+      - name: pytest
+        run: uv run pytest -q
+
+  web:
+    name: 前端
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: apps/web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 12.4.2
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: pnpm
+          cache-dependency-path: apps/web/pnpm-lock.yaml
+
+      - name: 装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: typecheck
+        run: pnpm typecheck
+
+      - name: lint
+        run: pnpm lint
+
+      - name: 单元测试
+        run: pnpm test:run
+
+      - name: build
+        run: pnpm build
+
+      - name: 装无头浏览器
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: 对比度回归（六个页面 × 深浅两套主题 + 弹层）
+        # 用真实浏览器读计算样式逐元素算对比度。它会自己起 dev server 与无头浏览器，
+        # 失败即说明有文字掉到 AA 以下——这条线此前是靠人眼看的，看不出来。
+        run: pnpm check:contrast

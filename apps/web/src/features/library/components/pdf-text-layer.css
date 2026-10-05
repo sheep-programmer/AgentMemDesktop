@@ -1,0 +1,70 @@
+/*
+ * pdf.js 文字层的最小样式。
+ *
+ * 官方的 pdf_viewer.css 有三千多行，绝大多数是批注编辑器、侧边栏这些用不上的东西；
+ * 文字层能对准画布只需要下面这些（取自 pdfjs-dist 6.x 的 .textLayer 规则）。
+ * 升级 pdf.js 大版本时要对照一下官方样式里这几条有没有变。
+ */
+.pdf-page {
+  --scale-round-x: 1px;
+  --scale-round-y: 1px;
+}
+
+.pdf-text-layer {
+  position: absolute;
+  inset: 0;
+  overflow: clip;
+  opacity: 1;
+  line-height: 1;
+  text-align: initial;
+  letter-spacing: normal;
+  word-spacing: normal;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+  forced-color-adjust: none;
+  transform-origin: 0 0;
+  z-index: 0;
+
+  --min-font-size: 1;
+  --text-scale-factor: calc(var(--total-scale-factor) * var(--min-font-size));
+  --min-font-size-inv: calc(1 / var(--min-font-size));
+}
+
+.pdf-text-layer :is(span, br) {
+  color: transparent;
+  position: absolute;
+  white-space: pre;
+  cursor: text;
+  transform-origin: 0% 0%;
+  user-select: text;
+}
+
+.pdf-text-layer > :not(.markedContent),
+.pdf-text-layer .markedContent span:not(.markedContent) {
+  z-index: 1;
+  --font-height: 0;
+  font-size: calc(var(--text-scale-factor) * var(--font-height));
+  --scale-x: 1;
+  --rotate: 0deg;
+  transform: rotate(var(--rotate)) scaleX(var(--scale-x)) scale(var(--min-font-size-inv));
+}
+
+.pdf-text-layer .markedContent {
+  display: contents;
+}
+
+.pdf-text-layer span[role='img'] {
+  user-select: none;
+  cursor: default;
+}
+
+.pdf-text-layer ::selection {
+  background: color-mix(in oklab, var(--primary) 35%, transparent);
+}
+
+/* 切片文字的高亮：底色用主色，multiply 让底下画布里的字依然清楚 */
+.pdf-text-layer span.pdf-hl {
+  background-color: color-mix(in oklab, var(--primary) 30%, transparent);
+  mix-blend-mode: multiply;
+  border-radius: 2px;
+}

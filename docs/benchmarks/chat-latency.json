@@ -1,0 +1,1558 @@
+{
+ "note": "真实链路：agnes-2.5-flash（云端）+ 本机 bge-m3 / bge-reranker-v2-m3（MPS），Space test（7 篇文档），标准上下文模式。before = 改动前 3 轮；after_cold = 改动后每轮前重启后端（缓存为空）共 3 轮；after_repeat = 同一批问题再问（缓存命中，模拟「重新生成」），第 2 轮追问遇到提供方 429 限流已剔除。数值为中位数。",
+ "summary": {
+  "before": [
+   {
+    "scenario": "短事实",
+    "turn": "first",
+    "n": 3,
+    "retrieval_ms": 9562,
+    "first_token_ms": 12259,
+    "total_ms": 13178,
+    "prompt_tokens": 3409,
+    "completion_tokens": 150,
+    "llm_calls": 1,
+    "evidence": 8,
+    "facts_ok": "3/3",
+    "citations": 2
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "first",
+    "n": 3,
+    "retrieval_ms": 8095,
+    "first_token_ms": 12682,
+    "total_ms": 13483,
+    "prompt_tokens": 4189,
+    "completion_tokens": 155,
+    "llm_calls": 1,
+    "evidence": 8,
+    "facts_ok": "3/3",
+    "citations": 1
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "follow",
+    "n": 3,
+    "retrieval_ms": 11026,
+    "first_token_ms": 14714,
+    "total_ms": 15746,
+    "prompt_tokens": 5316,
+    "completion_tokens": 317,
+    "llm_calls": 2,
+    "evidence": 8,
+    "facts_ok": "3/3",
+    "citations": 2
+   },
+   {
+    "scenario": "要点解释",
+    "turn": "first",
+    "n": 3,
+    "retrieval_ms": 6006,
+    "first_token_ms": 13392,
+    "total_ms": 13407,
+    "prompt_tokens": 3393,
+    "completion_tokens": 383,
+    "llm_calls": 1,
+    "evidence": 7,
+    "facts_ok": "3/3",
+    "citations": 1
+   },
+   {
+    "scenario": "跨文档对比",
+    "turn": "first",
+    "n": 3,
+    "retrieval_ms": 4154,
+    "first_token_ms": 7302,
+    "total_ms": 7489,
+    "prompt_tokens": 4264,
+    "completion_tokens": 156,
+    "llm_calls": 1,
+    "evidence": 8,
+    "facts_ok": "3/3",
+    "citations": 1
+   },
+   {
+    "scenario": "长文段落",
+    "turn": "first",
+    "n": 3,
+    "retrieval_ms": 9048,
+    "first_token_ms": 13759,
+    "total_ms": 15607,
+    "prompt_tokens": 3476,
+    "completion_tokens": 503,
+    "llm_calls": 1,
+    "evidence": 7,
+    "facts_ok": "3/3",
+    "citations": 2
+   }
+  ],
+  "after_cold": [
+   {
+    "scenario": "短事实",
+    "turn": "first",
+    "n": 3,
+    "retrieval_ms": 5640,
+    "first_token_ms": 10523,
+    "total_ms": 11310,
+    "prompt_tokens": 1284,
+    "completion_tokens": 166,
+    "llm_calls": 1,
+    "evidence": 1,
+    "facts_ok": "3/3",
+    "citations": 1
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "first",
+    "n": 3,
+    "retrieval_ms": 7248,
+    "first_token_ms": 10882,
+    "total_ms": 11205,
+    "prompt_tokens": 4189,
+    "completion_tokens": 189,
+    "llm_calls": 1,
+    "evidence": 8,
+    "facts_ok": "3/3",
+    "citations": 1
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "follow",
+    "n": 3,
+    "retrieval_ms": 9866,
+    "first_token_ms": 12151,
+    "total_ms": 12977,
+    "prompt_tokens": 5161,
+    "completion_tokens": 150,
+    "llm_calls": 2,
+    "evidence": 7,
+    "facts_ok": "3/3",
+    "citations": 1
+   },
+   {
+    "scenario": "要点解释",
+    "turn": "first",
+    "n": 3,
+    "retrieval_ms": 6981,
+    "first_token_ms": 9753,
+    "total_ms": 11267,
+    "prompt_tokens": 1873,
+    "completion_tokens": 268,
+    "llm_calls": 1,
+    "evidence": 3,
+    "facts_ok": "3/3",
+    "citations": 1
+   },
+   {
+    "scenario": "跨文档对比",
+    "turn": "first",
+    "n": 3,
+    "retrieval_ms": 6624,
+    "first_token_ms": 8662,
+    "total_ms": 9280,
+    "prompt_tokens": 4264,
+    "completion_tokens": 163,
+    "llm_calls": 1,
+    "evidence": 7,
+    "facts_ok": "3/3",
+    "citations": 1
+   },
+   {
+    "scenario": "长文段落",
+    "turn": "first",
+    "n": 3,
+    "retrieval_ms": 9085,
+    "first_token_ms": 12565,
+    "total_ms": 14486,
+    "prompt_tokens": 2103,
+    "completion_tokens": 573,
+    "llm_calls": 1,
+    "evidence": 2,
+    "facts_ok": "3/3",
+    "citations": 2
+   }
+  ],
+  "after_repeat": [
+   {
+    "scenario": "短事实",
+    "turn": "first",
+    "n": 2,
+    "retrieval_ms": 32,
+    "first_token_ms": 1574,
+    "total_ms": 1838,
+    "prompt_tokens": 1284,
+    "completion_tokens": 110,
+    "llm_calls": 1,
+    "evidence": 1,
+    "facts_ok": "2/2",
+    "citations": 1
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "first",
+    "n": 2,
+    "retrieval_ms": 49,
+    "first_token_ms": 2423,
+    "total_ms": 2824,
+    "prompt_tokens": 4189,
+    "completion_tokens": 176,
+    "llm_calls": 1,
+    "evidence": 8,
+    "facts_ok": "2/2",
+    "citations": 1
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "follow",
+    "n": 1,
+    "retrieval_ms": 7785,
+    "first_token_ms": 10433,
+    "total_ms": 10950,
+    "prompt_tokens": 5161,
+    "completion_tokens": 248,
+    "llm_calls": 2,
+    "evidence": 7,
+    "facts_ok": "1/1",
+    "citations": 1
+   },
+   {
+    "scenario": "要点解释",
+    "turn": "first",
+    "n": 2,
+    "retrieval_ms": 34,
+    "first_token_ms": 4620,
+    "total_ms": 5817,
+    "prompt_tokens": 1873,
+    "completion_tokens": 290,
+    "llm_calls": 1,
+    "evidence": 3,
+    "facts_ok": "2/2",
+    "citations": 2
+   },
+   {
+    "scenario": "跨文档对比",
+    "turn": "first",
+    "n": 2,
+    "retrieval_ms": 44,
+    "first_token_ms": 4192,
+    "total_ms": 4426,
+    "prompt_tokens": 4264,
+    "completion_tokens": 165,
+    "llm_calls": 1,
+    "evidence": 7,
+    "facts_ok": "2/2",
+    "citations": 1
+   },
+   {
+    "scenario": "长文段落",
+    "turn": "first",
+    "n": 2,
+    "retrieval_ms": 40,
+    "first_token_ms": 4243,
+    "total_ms": 7510,
+    "prompt_tokens": 2103,
+    "completion_tokens": 630,
+    "llm_calls": 1,
+    "evidence": 2,
+    "facts_ok": "2/2",
+    "citations": 2
+   }
+  ]
+ },
+ "raw": {
+  "before": [
+   {
+    "scenario": "短事实",
+    "turn": "first",
+    "question": "长江大学哪一年建立的",
+    "retrieval_ms": 12947.6,
+    "context_ms": 12948.3,
+    "first_token_ms": 15776.0,
+    "total_ms": 16003.9,
+    "prompt_tokens": 3409,
+    "completion_tokens": 107,
+    "estimated_tokens": 3284,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 2,
+    "cited_markers": [
+     "c1",
+     "c3"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n长江大学于 **2003年** 建立（具体为2003年5月经教育部批准合并组建）。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "first",
+    "question": "CMPD-005 的口服生物利用度和半衰期是多少？",
+    "retrieval_ms": 6139.8,
+    "context_ms": 6140.0,
+    "first_token_ms": 10167.5,
+    "total_ms": 11218.6,
+    "prompt_tokens": 4189,
+    "completion_tokens": 280,
+    "estimated_tokens": 3244,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 0,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n**结论**\n化合物 CMPD-005 的口服生物利用度为 45%，半衰期为 7 小时。\n\n**依据**\n检索原文第 5 节药代动力学参数明确记载该数据。\n\n: 化合物 CMPD-005 的口服生物利用度为 45%，血浆蛋白结合率 85%，半衰期 7 小时。CYP3A4 抑制 IC50 为 10 μM，hERG 抑制 IC50 为 25 μM。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "follow",
+    "question": "那它在 40℃/75%RH 下 6 个月降解多少？",
+    "retrieval_ms": 11026.3,
+    "context_ms": 11026.4,
+    "first_token_ms": 13297.7,
+    "total_ms": 16813.4,
+    "prompt_tokens": 5323,
+    "completion_tokens": 234,
+    "estimated_tokens": 3714,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 2,
+    "cited_markers": [
+     "c1",
+     "c2"
+    ],
+    "llm_calls": 2,
+    "llm_purposes": [
+     "contextualize",
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": "CMPD-005 在 40℃/75%RH 条件下放置 6 个月后的降解程度是多少？",
+    "facts_ok": true,
+    "answer": "\n\n**结论**\nCMPD-005 在 40℃/75%RH 条件下放置 6 个月，降解率为 **0%**。\n\n**依据**\n原文第 5 节稳定性数据明确记录：\"化合物 CMPD-005 在 40℃/75%RH 条件下 6 个月降解 0%，有关物质总量 0.5%\"。\n\n**注意事项**\n该数据对应的是 40℃/75%RH 加速稳定性条件，放置时间为 6 个月。",
+    "error": null
+   },
+   {
+    "scenario": "要点解释",
+    "turn": "first",
+    "question": "KRAS G12C 共价抑制剂首选哪种弹头？为什么？",
+    "retrieval_ms": 4664.7,
+    "context_ms": 4664.9,
+    "first_token_ms": 6473.4,
+    "total_ms": 7698.1,
+    "prompt_tokens": 3393,
+    "completion_tokens": 237,
+    "estimated_tokens": 3269,
+    "evidence_count": 7,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c2"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n**结论**：丙烯酰胺是首选弹头。  \n**依据**：丙烯酰胺具有中等反应性与高选择性，脱靶共价修饰风险显著低于高反应性但低选择性的氯乙酰胺。  \n**可执行步骤/注意事项**：在KRAS G12C共价抑制剂设计时，应优先选用丙烯酰胺作为共价连接子，并同步监测以下阈值以确保安全窗：kinact/KI > 1000 M⁻¹s⁻¹、GSH半衰期 > 24 h、对KRAS WT的选择性 > 100×。",
+    "error": null
+   },
+   {
+    "scenario": "跨文档对比",
+    "turn": "first",
+    "question": "CMPD-003 的晶型和熔点是什么？",
+    "retrieval_ms": 3873.5,
+    "context_ms": 3873.6,
+    "first_token_ms": 6598.9,
+    "total_ms": 7179.8,
+    "prompt_tokens": 4264,
+    "completion_tokens": 309,
+    "estimated_tokens": 3091,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-003 的晶型为 Form A，熔点为 153 度。\n\n依据：检索到的原文片段 c1 明确记录「化合物 CMPD-003 的晶型为 Form A，熔点 153 度」，与该化合物的知识卡片结论一致[^knowledge_card_formA]。",
+    "error": null
+   },
+   {
+    "scenario": "长文段落",
+    "turn": "first",
+    "question": "为什么单纯依赖共价弹头无法克服 C797S 突变？",
+    "retrieval_ms": 4830.0,
+    "context_ms": 4830.1,
+    "first_token_ms": 7695.6,
+    "total_ms": 10462.7,
+    "prompt_tokens": 3476,
+    "completion_tokens": 471,
+    "estimated_tokens": 3332,
+    "evidence_count": 7,
+    "retrieved": 8,
+    "citations": 2,
+    "cited_markers": [
+     "c1",
+     "c2"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n**结论**\n\n单纯依赖共价弹头无法克服 C797S 突变，原因是该突变同时引入了两个关键障碍：空间位阻效应和亲核进攻位点缺失。\n\n**依据**\n\nC797S 突变将第 797 位的半胱氨酸替换为丝氨酸，导致：\n\n1. **空间位阻**：丝氨酸的侧链结构与野生型半胱氨酸不同，改变了结合口袋的微环境，阻碍共价弹头的正常接近。\n2. **亲核进攻位点缺失**：共价抑制剂依赖于半胱氨酸的硫醇基团（-SH）进行亲核进攻形成共价键，而丝氨酸仅提供羟基（-OH），无法支持该反应路径。\n\n**可执行方向**\n\n需转向以下替代策略：\n- 利用别构结合口袋（Allosteric Pocket 4）\n- 开发第四代双重变构调节机制\n\n据此推测，这些非共价策略可绕过 C797S 引入的物理与化学限制，实现对突变体的纳摩尔级抑制。",
+    "error": null
+   },
+   {
+    "scenario": "短事实",
+    "turn": "first",
+    "question": "长江大学哪一年建立的",
+    "retrieval_ms": 6884.4,
+    "context_ms": 6884.6,
+    "first_token_ms": 9490.6,
+    "total_ms": 12779.0,
+    "prompt_tokens": 3409,
+    "completion_tokens": 150,
+    "estimated_tokens": 3284,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 2,
+    "cited_markers": [
+     "c1",
+     "c3"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n长江大学于2003年建立。\n\n具体为2003年5月经教育部批准，由原荆州师范学院、江汉石油学院、湖北农学院等高校合并组建而成。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "first",
+    "question": "CMPD-005 的口服生物利用度和半衰期是多少？",
+    "retrieval_ms": 8094.8,
+    "context_ms": 8095.3,
+    "first_token_ms": 14106.9,
+    "total_ms": 14943.0,
+    "prompt_tokens": 4189,
+    "completion_tokens": 155,
+    "estimated_tokens": 3244,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-005 的口服生物利用度为 **45%**，半衰期为 **7 小时** ``。\n\n依据来自 `药代动力学参数汇总.md` 第 5 节：化合物 CMPD-005 的口服生物利用度为 45%，血浆蛋白结合率 85%，半衰期 7 小时，CYP3A4 抑制 IC50 为 10 μM，hERG 抑制 IC50 为 25 μM ``。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "follow",
+    "question": "那它在 40℃/75%RH 下 6 个月降解多少？",
+    "retrieval_ms": 7588.1,
+    "context_ms": 7588.1,
+    "first_token_ms": 15037.0,
+    "total_ms": 15267.1,
+    "prompt_tokens": 5316,
+    "completion_tokens": 317,
+    "estimated_tokens": 3704,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 0,
+    "cited_markers": [],
+    "llm_calls": 2,
+    "llm_purposes": [
+     "contextualize",
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": "CMPD-005 在 40℃/75%RH 条件下放置 6 个月降解多少？",
+    "facts_ok": true,
+    "answer": "\n\nCMPD-005 在 40℃/75%RH 条件下放置 6 个月的降解率为 **0%** ``。\n\n依据来自 `稳定性数据.md` 第 5 节：化合物 CMPD-005 在 40℃/75%RH 条件下 6 个月降解 0%，有关物质总量 0.5% ``。",
+    "error": null
+   },
+   {
+    "scenario": "要点解释",
+    "turn": "first",
+    "question": "KRAS G12C 共价抑制剂首选哪种弹头？为什么？",
+    "retrieval_ms": 6397.2,
+    "context_ms": 6398.7,
+    "first_token_ms": 13392.0,
+    "total_ms": 13406.7,
+    "prompt_tokens": 3393,
+    "completion_tokens": 399,
+    "estimated_tokens": 3269,
+    "evidence_count": 7,
+    "retrieved": 8,
+    "citations": 2,
+    "cited_markers": [
+     "c1",
+     "c2"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nKRAS G12C 共价抑制剂首选**丙烯酰胺**作为弹头。\n\n**原因**：丙烯酰胺反应性适中，脱靶共价修饰风险显著低于氯乙酰胺。\n\n三种弹头对比如下：\n\n| 弹头类型 | 反应性 | 选择性 | 代表药物 |\n|---------|-------|-------|---------|\n| 丙烯酰胺 | 中等 | 高 | Sotorasib |\n| 氯乙酰胺 | 高 | 低 | 早期工具化合物 |\n| 炔酰胺 | 低 | 很高 | Adagrasib 类似物 |\n\n丙烯酰胺在反应性与选择性之间取得最佳平衡，既能有效与突变位点半胱氨酸形成共价键，又不会因过度活泼而导致广泛的脱靶修饰。",
+    "error": null
+   },
+   {
+    "scenario": "跨文档对比",
+    "turn": "first",
+    "question": "CMPD-003 的晶型和熔点是什么？",
+    "retrieval_ms": 6717.6,
+    "context_ms": 6719.1,
+    "first_token_ms": 8467.1,
+    "total_ms": 8702.3,
+    "prompt_tokens": 4264,
+    "completion_tokens": 84,
+    "estimated_tokens": 3091,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-003 的晶型为 **Form A**，熔点为 **153 度**。\n\n依据原文记录：「化合物 CMPD-003 的晶型为 Form A，熔点 153 度」。",
+    "error": null
+   },
+   {
+    "scenario": "长文段落",
+    "turn": "first",
+    "question": "为什么单纯依赖共价弹头无法克服 C797S 突变？",
+    "retrieval_ms": 9557.8,
+    "context_ms": 9558.0,
+    "first_token_ms": 14357.1,
+    "total_ms": 16640.1,
+    "prompt_tokens": 3476,
+    "completion_tokens": 797,
+    "estimated_tokens": 3332,
+    "evidence_count": 7,
+    "retrieved": 8,
+    "citations": 2,
+    "cited_markers": [
+     "c1",
+     "c4"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n## 结论\n\n单纯依赖共价弹头无法克服 C797S 突变，原因是该突变同时引入**空间位阻**与**亲核进攻位点缺失**两个问题。\n\n## 依据\n\n1. **亲核进攻位点缺失**：C797S 突变将第 797 位的半胱氨酸（含巯基 -SH，是共价抑制剂结合的关键亲核残基）突变为丝氨酸，导致共价弹头失去结合位点。\n\n2. **空间位阻增加**：丝氨酸侧链较半胱氨酸在三维空间上造成额外位阻，进一步阻碍抑制剂分子的结合。\n\n3. 相关证据指出，针对非催化半胱氨酸残基（如 Cys797）的不可逆共价弹头优化需要平衡反应性矩阵以避免非特异性谷胱甘肽加合物形成，但同时维持对野生型受体的高激酶选择性。C797S 突变使得这一平衡被彻底打破。\n\n## 可执行方向\n\n据资料，克服 C797S 的有效策略需转向：\n- 借助**别构结合口袋（Allosteric Pocket 4）**实现纳摩尔级抑制\n- 采用**第四代双重变构调节机制**\n\n据此推测，任何保留传统共价弹头的设计对 C797S 突变体均不可行，需重新规划分子骨架与结合模式。",
+    "error": null
+   },
+   {
+    "scenario": "短事实",
+    "turn": "first",
+    "question": "长江大学哪一年建立的",
+    "retrieval_ms": 9562.1,
+    "context_ms": 9562.3,
+    "first_token_ms": 12258.7,
+    "total_ms": 13178.3,
+    "prompt_tokens": 3409,
+    "completion_tokens": 235,
+    "estimated_tokens": 3284,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 2,
+    "cited_markers": [
+     "c1",
+     "c3"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n长江大学于**2003年5月**经教育部批准合并组建而成。\n\n依据：该大学由原荆州师范学院、江汉石油学院、湖北农学院等高校合并组建。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "first",
+    "question": "CMPD-005 的口服生物利用度和半衰期是多少？",
+    "retrieval_ms": 9900.9,
+    "context_ms": 9901.1,
+    "first_token_ms": 12681.5,
+    "total_ms": 13482.7,
+    "prompt_tokens": 4189,
+    "completion_tokens": 147,
+    "estimated_tokens": 3244,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-005 的口服生物利用度为 45%，半衰期为 7 小时。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "follow",
+    "question": "那它在 40℃/75%RH 下 6 个月降解多少？",
+    "retrieval_ms": 11697.8,
+    "context_ms": 11698.4,
+    "first_token_ms": 14713.9,
+    "total_ms": 15746.3,
+    "prompt_tokens": 5015,
+    "completion_tokens": 409,
+    "estimated_tokens": 3541,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 2,
+    "cited_markers": [
+     "c1",
+     "c2"
+    ],
+    "llm_calls": 2,
+    "llm_purposes": [
+     "contextualize",
+     "chat"
+    ],
+    "cached_tokens": 0,
+    "rewritten": "CMPD-005 在 40℃/75%RH 下 6 个月降解多少？",
+    "facts_ok": true,
+    "answer": "\n\nCMPD-005 在 40℃/75%RH 条件下放置 6 个月后降解率为 **0%**。\n\n同时，其有关物质总量为 0.5%。\n\n---\n\n**依据：**\n- evidence c1 明确记录：\"化合物 CMPD-005 在 40℃/75%RH 条件下 6 个月降解 0%，有关物质总量 0.5%\"\n- evidence c2 的汇总表也确认该数值：CMPD-001 至 CMPD-012 的降解率序列中，第 5 项（CMPD-005）为 0%",
+    "error": null
+   },
+   {
+    "scenario": "要点解释",
+    "turn": "first",
+    "question": "KRAS G12C 共价抑制剂首选哪种弹头？为什么？",
+    "retrieval_ms": 6006.5,
+    "context_ms": 6006.6,
+    "first_token_ms": 15455.6,
+    "total_ms": 15928.1,
+    "prompt_tokens": 3393,
+    "completion_tokens": 383,
+    "estimated_tokens": 3269,
+    "evidence_count": 7,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c2"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n**结论**：KRAS G12C 共价抑制剂首选**丙烯酰胺**弹头。\n\n**依据**：丙烯酰胺的反应性适中，脱靶共价修饰风险显著低于氯乙酰胺。\n\n相比之下：\n- 氯乙酰胺反应性过高、选择性低，仅适用于早期工具化合物；\n- 炔酰胺反应性过低、虽然选择性很高但适用性受限，主要用于 Adagrasib 类似物。\n\n因此丙烯酰胺在反应性与选择性之间取得最佳平衡，成为临床候选分子的主流选择（如 Sotorasib）。",
+    "error": null
+   },
+   {
+    "scenario": "跨文档对比",
+    "turn": "first",
+    "question": "CMPD-003 的晶型和熔点是什么？",
+    "retrieval_ms": 4153.8,
+    "context_ms": 4153.9,
+    "first_token_ms": 7301.7,
+    "total_ms": 7488.7,
+    "prompt_tokens": 4264,
+    "completion_tokens": 156,
+    "estimated_tokens": 3091,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-003 的晶型为 **Form A**，熔点 **153 度**。",
+    "error": null
+   },
+   {
+    "scenario": "长文段落",
+    "turn": "first",
+    "question": "为什么单纯依赖共价弹头无法克服 C797S 突变？",
+    "retrieval_ms": 9048.3,
+    "context_ms": 9049.9,
+    "first_token_ms": 13758.9,
+    "total_ms": 15607.1,
+    "prompt_tokens": 3476,
+    "completion_tokens": 503,
+    "estimated_tokens": 3332,
+    "evidence_count": 7,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n单纯依赖共价弹头无法克服 C797S 突变，原因是该突变同时引入了**空间位阻**与**亲核进攻位点缺失**两个问题。\n\n具体而言：\n\n1. **空间位阻**：C797S 将半胱氨酸突变为丝氨酸，侧链体积增大并改变局部构象，阻碍共价弹头与靶点的接近。\n\n2. **亲核进攻位点缺失**：共价抑制剂依赖与 Cys797 形成共价键，而 C797S 突变后该关键半胱氨酸被丝氨酸取代，共价反应所必需的亲核硫醇基团不复存在。\n\n因此，仅靠共价弹头无法实现对 C797S 突变体的有效抑制，必须转向**别构结合口袋（Allosteric Pocket 4）**或采用**第四代双重变构调节机制**，才能在该突变体上实现纳摩尔级抑制。\n\n**适用范围说明**：此结论基于 EGFR 激酶结构域三重突变（L858R/T790M/C797S）背景下的体外实验数据，不直接外推至其他靶点或其他突变类型。",
+    "error": null
+   }
+  ],
+  "after_cold": [
+   {
+    "scenario": "短事实",
+    "turn": "first",
+    "question": "长江大学哪一年建立的",
+    "retrieval_ms": 5639.8,
+    "context_ms": 5640.2,
+    "first_token_ms": 8160.5,
+    "total_ms": 9114.2,
+    "prompt_tokens": 1284,
+    "completion_tokens": 186,
+    "estimated_tokens": 1148,
+    "evidence_count": 1,
+    "retrieved": 1,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n长江大学于 **2003年** 建立。\n\n具体而言，由原荆州师范学院、江汉石油学院、湖北农学院等高校于2003年5月经教育部批准合并组建而成。校庆日为5月22日。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "first",
+    "question": "CMPD-005 的口服生物利用度和半衰期是多少？",
+    "retrieval_ms": 4876.0,
+    "context_ms": 4876.1,
+    "first_token_ms": 7291.9,
+    "total_ms": 7666.4,
+    "prompt_tokens": 4189,
+    "completion_tokens": 188,
+    "estimated_tokens": 3244,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n**结论**：CMPD-005 的口服生物利用度为 45%，半衰期为 7 小时。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "follow",
+    "question": "那它在 40℃/75%RH 下 6 个月降解多少？",
+    "retrieval_ms": 10473.5,
+    "context_ms": 10473.6,
+    "first_token_ms": 12151.4,
+    "total_ms": 12976.8,
+    "prompt_tokens": 4953,
+    "completion_tokens": 150,
+    "estimated_tokens": 3468,
+    "evidence_count": 7,
+    "retrieved": 7,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 2,
+    "llm_purposes": [
+     "contextualize",
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": "CMPD-005 在 40℃/75%RH 条件下储存 6 个月的降解量是多少？",
+    "facts_ok": true,
+    "answer": "\n\n**结论**：CMPD-005 在 40℃/75%RH 条件下 6 个月降解率为 0%，有关物质总量为 0.5%。\n\n**依据**：该数据直接来源于稳定性数据记录。",
+    "error": null
+   },
+   {
+    "scenario": "要点解释",
+    "turn": "first",
+    "question": "KRAS G12C 共价抑制剂首选哪种弹头？为什么？",
+    "retrieval_ms": 3639.2,
+    "context_ms": 3639.3,
+    "first_token_ms": 9753.2,
+    "total_ms": 11344.2,
+    "prompt_tokens": 1873,
+    "completion_tokens": 390,
+    "estimated_tokens": 1765,
+    "evidence_count": 3,
+    "retrieved": 3,
+    "citations": 3,
+    "cited_markers": [
+     "c1",
+     "c3",
+     "c2"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n**结论：**首选丙烯酰胺弹头。\n\n**原因：**\n\n1. **反应性与选择性平衡最优**：丙烯酰胺反应性适中，对 KRAS G12C 的选择性高（典型代表 Sotorasib）。相比之下，氯乙酰胺反应性过高、选择性低，炔酰胺虽选择性很高但反应性过低，均不如丙烯酰胺在整体药化性质上均衡。\n\n2. **脱靶风险可控**：丙烯酰胺的脱靶共价修饰风险显著低于氯乙酰胺。\n\n**注意事项：**\n- 仅生化 IC50 不足以评价共价抑制剂，必须报告预孵育时间，不同文献间的数据不可直接比较。\n- 若存在 C797S 突变导致空间位阻和亲核位点缺失，共价弹头本身无法克服，需借助别构结合口袋或双重变构调节策略。\n\n---\n\n**依据来源：** `kras-test.md › KRAS G12C 共价抑制剂设计要点`；`EGFR小分子库与药代动力学评估报告`。",
+    "error": null
+   },
+   {
+    "scenario": "跨文档对比",
+    "turn": "first",
+    "question": "CMPD-003 的晶型和熔点是什么？",
+    "retrieval_ms": 3815.2,
+    "context_ms": 3815.3,
+    "first_token_ms": 6469.2,
+    "total_ms": 6672.7,
+    "prompt_tokens": 4264,
+    "completion_tokens": 163,
+    "estimated_tokens": 3113,
+    "evidence_count": 7,
+    "retrieved": 7,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-003 的晶型为 Form A，熔点 153 度。",
+    "error": null
+   },
+   {
+    "scenario": "长文段落",
+    "turn": "first",
+    "question": "为什么单纯依赖共价弹头无法克服 C797S 突变？",
+    "retrieval_ms": 4638.7,
+    "context_ms": 4638.8,
+    "first_token_ms": 9062.3,
+    "total_ms": 10216.3,
+    "prompt_tokens": 2103,
+    "completion_tokens": 483,
+    "estimated_tokens": 2151,
+    "evidence_count": 2,
+    "retrieved": 2,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n**结论**\n\n单纯依赖共价弹头无法克服 C797S 突变，原因有两个：该突变引入了空间位阻，同时缺失了共价结合所需的亲核进攻位点。\n\n**依据**\n\n根据实验研究，C797S 突变导致共价抑制剂无法有效结合，必须借助别构结合口袋（Allosteric Pocket 4）或第四代双重变构调节机制才能实现纳摩尔级抑制。\n\n**可执行建议**\n\n若目标是抑制 C797S 突变体，应放弃单纯共价弹头策略，转向：\n- 设计靶向别构口袋 4 的非共价抑制剂\n- 开发第四代双重变构调节机制\n\n据此推测，传统三代 TKI（如奥希替尼）对携带 C797S 突变的肿瘤可能疗效显著降低，需要验证新一代化合物的临床数据。",
+    "error": null
+   },
+   {
+    "scenario": "短事实",
+    "turn": "first",
+    "question": "长江大学哪一年建立的",
+    "retrieval_ms": 4973.6,
+    "context_ms": 4973.7,
+    "first_token_ms": 10523.4,
+    "total_ms": 11310.2,
+    "prompt_tokens": 1284,
+    "completion_tokens": 154,
+    "estimated_tokens": 1148,
+    "evidence_count": 1,
+    "retrieved": 1,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n**结论**：长江大学于2003年5月建立。\n\n**依据**：检索资料显示，长江大学由原荆州师范学院、江汉石油学院、湖北农学院等高校于2003年5月经教育部批准合并组建。校庆日为5月22日。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "first",
+    "question": "CMPD-005 的口服生物利用度和半衰期是多少？",
+    "retrieval_ms": 7248.1,
+    "context_ms": 7248.1,
+    "first_token_ms": 10881.8,
+    "total_ms": 11205.3,
+    "prompt_tokens": 4189,
+    "completion_tokens": 189,
+    "estimated_tokens": 3244,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-005 的口服生物利用度为 45%，半衰期为 7 小时。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "follow",
+    "question": "那它在 40℃/75%RH 下 6 个月降解多少？",
+    "retrieval_ms": 9865.6,
+    "context_ms": 9865.7,
+    "first_token_ms": 12779.9,
+    "total_ms": 13685.4,
+    "prompt_tokens": 5161,
+    "completion_tokens": 381,
+    "estimated_tokens": 3559,
+    "evidence_count": 7,
+    "retrieved": 7,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 2,
+    "llm_purposes": [
+     "contextualize",
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": "CMPD-005 在 40℃/75%RH 下 6 个月降解多少",
+    "facts_ok": true,
+    "answer": "\n\nCMPD-005 在 40℃/75%RH 条件下放置 6 个月的降解率为 0%。\n\n**依据**：稳定性数据记录第 5 节明确写明该化合物在此条件下 6 个月降解 0%，有关物质总量为 0.5%。\n\n**注意**：此数据仅适用于 40℃/75%RH 加速稳定性试验的 6 个月时间点，不同温湿度或更长时间点的结果需另行验证。",
+    "error": null
+   },
+   {
+    "scenario": "要点解释",
+    "turn": "first",
+    "question": "KRAS G12C 共价抑制剂首选哪种弹头？为什么？",
+    "retrieval_ms": 7467.0,
+    "context_ms": 7467.1,
+    "first_token_ms": 9313.7,
+    "total_ms": 11267.4,
+    "prompt_tokens": 1873,
+    "completion_tokens": 250,
+    "estimated_tokens": 1765,
+    "evidence_count": 3,
+    "retrieved": 3,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nKRAS G12C 共价抑制剂首选**丙烯酰胺**弹头。\n\n依据如下：\n- 丙烯酰胺的共价反应性**适中**，能在有效结合突变 KRAS G12C 半胱氨酸的同时，显著降低与其他脱靶蛋白（如谷胱甘肽、血清白蛋白等）发生非特异性共价修饰的风险。\n- 相比之下，氯乙酰胺虽然反应性更高，但选择性较低，易导致脱靶共价修饰，安全性较差；炔酰胺反应性过低，可能无法满足体内抑制所需的动力学要求。\n- 因此，丙烯酰胺在反应性、选择性与临床安全性之间取得了最佳平衡，成为该靶点的首选共价弹头。",
+    "error": null
+   },
+   {
+    "scenario": "跨文档对比",
+    "turn": "first",
+    "question": "CMPD-003 的晶型和熔点是什么？",
+    "retrieval_ms": 8667.6,
+    "context_ms": 8667.9,
+    "first_token_ms": 11435.8,
+    "total_ms": 11871.6,
+    "prompt_tokens": 4264,
+    "completion_tokens": 98,
+    "estimated_tokens": 3113,
+    "evidence_count": 7,
+    "retrieved": 7,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-003 的晶型为 Form A，熔点为 153 度。\n\n**依据**：原文第 3 节晶型研究明确记载「化合物 CMPD-003 的晶型为 Form A，熔点 153 度」。",
+    "error": null
+   },
+   {
+    "scenario": "长文段落",
+    "turn": "first",
+    "question": "为什么单纯依赖共价弹头无法克服 C797S 突变？",
+    "retrieval_ms": 11124.3,
+    "context_ms": 11124.5,
+    "first_token_ms": 14353.8,
+    "total_ms": 16138.1,
+    "prompt_tokens": 2103,
+    "completion_tokens": 573,
+    "estimated_tokens": 2151,
+    "evidence_count": 2,
+    "retrieved": 2,
+    "citations": 2,
+    "cited_markers": [
+     "c2",
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n**结论**：C797S 突变同时引入了**空间位阻**和**亲核进攻位点缺失**两个问题，共价弹头依赖的半胱氨酸亲核攻击条件被破坏，因此无法有效抑制该突变体。\n\n**依据**：\n\n根据检索文献，C797S 是第三代 EGFR 共价抑制剂使用后出现的耐药突变。实验研究表明，单纯依赖共价弹头无法克服该突变，原因是 C797S 同时造成两类效应：\n\n1. **空间位阻**：丝氨酸相比半胱氨酸引入了空间位阻效应，阻碍共价弹头的接近与结合。\n2. **亲核进攻位点缺失**：共价抑制剂通过与靶标蛋白中特定半胱氨酸的巯基（-SH）发生共价键合实现抑制；C797S 将该位点的半胱氨酸突变为丝氨酸（-OH），导致共价键无法形成，共价弹头完全失效。\n\n因此，应对该突变需转向**别构结合口袋 4**（Allosteric Pocket 4）或**第四代双重变构调节机制**，以实现对该突变体的纳摩尔级抑制。",
+    "error": null
+   },
+   {
+    "scenario": "短事实",
+    "turn": "first",
+    "question": "长江大学哪一年建立的",
+    "retrieval_ms": 12103.3,
+    "context_ms": 12103.9,
+    "first_token_ms": 18085.1,
+    "total_ms": 18455.4,
+    "prompt_tokens": 1284,
+    "completion_tokens": 166,
+    "estimated_tokens": 1148,
+    "evidence_count": 1,
+    "retrieved": 1,
+    "citations": 0,
+    "cited_markers": [],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n长江大学于 **2003年** 建立[^1]。\n\n具体而言，2003年5月经教育部批准，由原荆州师范学院、江汉石油学院、湖北农学院等高校合并组建而成[^1]。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "first",
+    "question": "CMPD-005 的口服生物利用度和半衰期是多少？",
+    "retrieval_ms": 9313.2,
+    "context_ms": 9313.4,
+    "first_token_ms": 11492.8,
+    "total_ms": 11713.6,
+    "prompt_tokens": 4189,
+    "completion_tokens": 193,
+    "estimated_tokens": 3244,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n化合物 CMPD-005 的口服生物利用度为 45%，半衰期为 7 小时。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "follow",
+    "question": "那它在 40℃/75%RH 下 6 个月降解多少？",
+    "retrieval_ms": 7564.4,
+    "context_ms": 7564.6,
+    "first_token_ms": 10538.1,
+    "total_ms": 10541.6,
+    "prompt_tokens": 5162,
+    "completion_tokens": 127,
+    "estimated_tokens": 3563,
+    "evidence_count": 7,
+    "retrieved": 7,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 2,
+    "llm_purposes": [
+     "contextualize",
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": "CMPD-005 在 40℃/75%RH 下 6 个月降解多少",
+    "facts_ok": true,
+    "answer": "\n\nCMPD-005 在 40℃/75%RH 条件下放置 6 个月后的降解率为 **0%**。",
+    "error": null
+   },
+   {
+    "scenario": "要点解释",
+    "turn": "first",
+    "question": "KRAS G12C 共价抑制剂首选哪种弹头？为什么？",
+    "retrieval_ms": 6980.7,
+    "context_ms": 6980.9,
+    "first_token_ms": 9953.9,
+    "total_ms": 10585.7,
+    "prompt_tokens": 1873,
+    "completion_tokens": 268,
+    "estimated_tokens": 1765,
+    "evidence_count": 3,
+    "retrieved": 3,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n首选**丙烯酰胺**弹头。\n\n原因：丙烯酰胺反应性适中，脱靶共价修饰风险显著低于氯乙酰胺。相比之下，氯乙酰胺反应性过高导致选择性低，炔酰胺反应性过低。",
+    "error": null
+   },
+   {
+    "scenario": "跨文档对比",
+    "turn": "first",
+    "question": "CMPD-003 的晶型和熔点是什么？",
+    "retrieval_ms": 6624.1,
+    "context_ms": 6624.2,
+    "first_token_ms": 8661.9,
+    "total_ms": 9280.2,
+    "prompt_tokens": 4264,
+    "completion_tokens": 236,
+    "estimated_tokens": 3113,
+    "evidence_count": 7,
+    "retrieved": 7,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-003 的晶型为 Form A，熔点为 153 度。\n\n依据来源：\n- 原文「第 3 节 晶型研究」记录该化合物晶型为 Form A、熔点 153 度\n- 知识卡片中与 Form A 晶型相关条目明确列出 CMPD-003 对应熔点 153 度",
+    "error": null
+   },
+   {
+    "scenario": "长文段落",
+    "turn": "first",
+    "question": "为什么单纯依赖共价弹头无法克服 C797S 突变？",
+    "retrieval_ms": 9084.8,
+    "context_ms": 9084.9,
+    "first_token_ms": 12565.1,
+    "total_ms": 14486.4,
+    "prompt_tokens": 2103,
+    "completion_tokens": 595,
+    "estimated_tokens": 2151,
+    "evidence_count": 2,
+    "retrieved": 2,
+    "citations": 2,
+    "cited_markers": [
+     "c1",
+     "c2"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n单纯依赖共价弹头无法克服 C797S 突变，原因是该突变同时引入了两个关键问题：\n\n1. **亲核进攻位点缺失**：C797S 突变将激酶结构域第 797 位的半胱氨酸（Cysteine）替换为丝氨酸（Serine），共价抑制剂依赖该半胱氨酸的巯基作为亲核位点形成共价键，位点消失后共价弹头无法结合。\n\n2. **空间位阻**：丝氨酸侧链与原有半胱氨酸相比产生额外的立体阻碍，进一步阻断抑制剂进入结合口袋。\n\n据此推测，需要借助别构结合口袋 4（Allosteric Pocket 4）或第四代双重变构调节机制，才能实现对 C797S 突变体的纳摩尔级抑制。\n\n**适用范围**：此结论针对 EGFR 激酶结构域的三重突变背景（敏感突变 L858R + 耐药突变 T790M + C797S）。",
+    "error": null
+   }
+  ],
+  "after_repeat": [
+   {
+    "scenario": "短事实",
+    "turn": "first",
+    "question": "长江大学哪一年建立的",
+    "retrieval_ms": 33.7,
+    "context_ms": 33.8,
+    "first_token_ms": 1344.6,
+    "total_ms": 1459.7,
+    "prompt_tokens": 1284,
+    "completion_tokens": 60,
+    "estimated_tokens": 1148,
+    "evidence_count": 1,
+    "retrieved": 1,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n长江大学于2003年5月建立。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "first",
+    "question": "CMPD-005 的口服生物利用度和半衰期是多少？",
+    "retrieval_ms": 64.4,
+    "context_ms": 64.5,
+    "first_token_ms": 2828.9,
+    "total_ms": 3439.5,
+    "prompt_tokens": 4189,
+    "completion_tokens": 210,
+    "estimated_tokens": 3244,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-005 的口服生物利用度为 45%，半衰期为 7 小时。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "follow",
+    "question": "那它在 40℃/75%RH 下 6 个月降解多少？",
+    "retrieval_ms": 7784.9,
+    "context_ms": 7785.1,
+    "first_token_ms": 10433.3,
+    "total_ms": 10950.1,
+    "prompt_tokens": 5161,
+    "completion_tokens": 248,
+    "estimated_tokens": 3559,
+    "evidence_count": 7,
+    "retrieved": 7,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 2,
+    "llm_purposes": [
+     "contextualize",
+     "chat"
+    ],
+    "cached_tokens": 5120,
+    "rewritten": "CMPD-005 在 40℃/75%RH 条件下放置 6 个月降解多少？",
+    "facts_ok": true,
+    "answer": "\n\nCMPD-005 在 40℃/75%RH 条件下 6 个月的降解率为 **0%**。\n\n值得注意的是，该化合物虽然降解率为 0%，但有关物质总量为 0.5%。这表明化合物本身稳定，但可能存在工艺相关杂质或降解产物的本底水平。",
+    "error": null
+   },
+   {
+    "scenario": "要点解释",
+    "turn": "first",
+    "question": "KRAS G12C 共价抑制剂首选哪种弹头？为什么？",
+    "retrieval_ms": 34.6,
+    "context_ms": 34.7,
+    "first_token_ms": 7290.5,
+    "total_ms": 8482.0,
+    "prompt_tokens": 1873,
+    "completion_tokens": 233,
+    "estimated_tokens": 1765,
+    "evidence_count": 3,
+    "retrieved": 3,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n首选**丙烯酰胺**弹头。\n\n**原因：**\n丙烯酰胺反应性适中，对 KRAS G12C 的选择性高，且脱靶共价修饰风险显著低于氯乙酰胺。\n\n相比之下，氯乙酰胺虽反应性高但选择性低；炔酰胺选择性很高但反应性过低。",
+    "error": null
+   },
+   {
+    "scenario": "跨文档对比",
+    "turn": "first",
+    "question": "CMPD-003 的晶型和熔点是什么？",
+    "retrieval_ms": 55.3,
+    "context_ms": 55.6,
+    "first_token_ms": 3225.5,
+    "total_ms": 3455.1,
+    "prompt_tokens": 4264,
+    "completion_tokens": 121,
+    "estimated_tokens": 3113,
+    "evidence_count": 7,
+    "retrieved": 7,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-003 的晶型为 Form A，熔点 153 度。",
+    "error": null
+   },
+   {
+    "scenario": "长文段落",
+    "turn": "first",
+    "question": "为什么单纯依赖共价弹头无法克服 C797S 突变？",
+    "retrieval_ms": 30.9,
+    "context_ms": 31.0,
+    "first_token_ms": 4682.3,
+    "total_ms": 8494.3,
+    "prompt_tokens": 2103,
+    "completion_tokens": 594,
+    "estimated_tokens": 2151,
+    "evidence_count": 2,
+    "retrieved": 2,
+    "citations": 2,
+    "cited_markers": [
+     "c1",
+     "c2"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n## 结论\n\n单纯依赖共价弹头无法克服 C797S 突变，原因是该突变**同时引入了空间位阻效应与亲核进攻位点缺失**两个结构性障碍。\n\n## 依据\n\n- C797S 是 EGFR 激酶结构域中由第三代共价抑制剂选择性压力诱导的耐药突变。\n- 野生型 EGFR 中 Cys797 的巯基（-SH）是共价弹头发生迈克尔加成或类似亲核攻击的关键靶点；C797S 将该半胱氨酸突变为丝氨酸，**移除了亲核进攻位点**，导致共价键无法形成。\n- 同时，丝氨酸的侧链构象与局部微环境变化会在突变位点附近产生**空间位阻**，进一步阻碍抑制剂分子的正确结合与定向。\n- 实验数据表明，针对这种三重突变（L858R/T790M/C797S），化合物在不同构型下展现出截然不同的热力学与动力学特征，共价抑制策略失效。\n\n## 可执行建议\n\n若目标是实现对该突变体的有效抑制，需转向以下替代路径：\n\n1. **别构结合口袋（Allosteric Pocket 4）**：寻找可嵌入该口袋的非 ATP 竞争性小分子，绕过共价结合需求。\n2. **第四代双重变构调节机制**：同时调控激酶结构域的多个别构位点，实现对 C797S 突变体的纳摩尔级抑制。\n3. **结构验证**：在设计新骨架前，建议通过 X 射线晶体学或 Cryo-EM 确认化合物与 C797S 突变体的结合构型，避免仅凭序列比对或同源性外推做出决策。\n\n---\n\n**不确定性说明**：以上结论基于当前检索到的文献片段，关于具体结合自由能数值、突变体热力学参数的量化数据未在现有资料中覆盖，需要补充完整实验数据才能进一步验证。",
+    "error": null
+   },
+   {
+    "scenario": "短事实",
+    "turn": "first",
+    "question": "长江大学哪一年建立的",
+    "retrieval_ms": 30.6,
+    "context_ms": 30.7,
+    "first_token_ms": 1803.9,
+    "total_ms": 2215.5,
+    "prompt_tokens": 1284,
+    "completion_tokens": 161,
+    "estimated_tokens": 1148,
+    "evidence_count": 1,
+    "retrieved": 1,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n长江大学于 **2003年5月** 正式建立。\n\n**依据**：该大学由原荆州师范学院、江汉石油学院、湖北农学院等高校经教育部批准合并组建而成，校庆日定为5月22日。",
+    "error": null
+   },
+   {
+    "scenario": "表格参数",
+    "turn": "first",
+    "question": "CMPD-005 的口服生物利用度和半衰期是多少？",
+    "retrieval_ms": 33.9,
+    "context_ms": 34.0,
+    "first_token_ms": 2016.2,
+    "total_ms": 2208.5,
+    "prompt_tokens": 4189,
+    "completion_tokens": 142,
+    "estimated_tokens": 3244,
+    "evidence_count": 8,
+    "retrieved": 8,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-005 的口服生物利用度为 45%，半衰期为 7 小时。",
+    "error": null
+   },
+   {
+    "scenario": "要点解释",
+    "turn": "first",
+    "question": "KRAS G12C 共价抑制剂首选哪种弹头？为什么？",
+    "retrieval_ms": 34.1,
+    "context_ms": 34.2,
+    "first_token_ms": 1949.3,
+    "total_ms": 3152.8,
+    "prompt_tokens": 1873,
+    "completion_tokens": 346,
+    "estimated_tokens": 1765,
+    "evidence_count": 3,
+    "retrieved": 3,
+    "citations": 3,
+    "cited_markers": [
+     "c1",
+     "c2",
+     "c3"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n首选丙烯酰胺弹头。\n\n原因如下：\n\n1. 反应性适中，安全性优于高反应性弹头。氯乙酰胺反应性过高，脱靶共价修饰风险显著增加。\n\n2. 选择性高，对 KRAS WT 的选择性倍数应大于 100x。这是规避剂量限制性脱靶毒性的关键指标。\n\n3. 典型代表药物 Sotorasib 即采用丙烯酰胺弹头，临床验证了其可行性。\n\n注意事项：共价抑制是时间依赖过程，评价时需报告预孵育时间，不同文献的 IC50 因预孵育时间不同不可直接比较。此外还需关注谷胱甘肽（GSH）半衰期需大于 24 小时，低于此值提示弹头过度活泼。",
+    "error": null
+   },
+   {
+    "scenario": "跨文档对比",
+    "turn": "first",
+    "question": "CMPD-003 的晶型和熔点是什么？",
+    "retrieval_ms": 32.2,
+    "context_ms": 32.2,
+    "first_token_ms": 5158.9,
+    "total_ms": 5397.3,
+    "prompt_tokens": 4264,
+    "completion_tokens": 209,
+    "estimated_tokens": 3113,
+    "evidence_count": 7,
+    "retrieved": 7,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\nCMPD-003 的晶型为 **Form A**，熔点为 **153 度**。",
+    "error": null
+   },
+   {
+    "scenario": "长文段落",
+    "turn": "first",
+    "question": "为什么单纯依赖共价弹头无法克服 C797S 突变？",
+    "retrieval_ms": 49.3,
+    "context_ms": 50.6,
+    "first_token_ms": 3804.6,
+    "total_ms": 6525.0,
+    "prompt_tokens": 2103,
+    "completion_tokens": 667,
+    "estimated_tokens": 2151,
+    "evidence_count": 2,
+    "retrieved": 2,
+    "citations": 1,
+    "cited_markers": [
+     "c1"
+    ],
+    "llm_calls": 1,
+    "llm_purposes": [
+     "chat"
+    ],
+    "cached_tokens": 256,
+    "rewritten": null,
+    "facts_ok": true,
+    "answer": "\n\n## 结论\n\n单纯依赖共价弹头无法克服 C797S 突变，是因为该突变会**同时引入空间位阻与亲核进攻位点缺失**两个问题。\n\n## 依据\n\n1. **空间位阻**：C797S 将半胱氨酸突变为丝氨酸，改变了结合口袋的空间结构，阻碍共价抑制剂的有效对接。\n2. **亲核进攻位点缺失**：共价抑制剂依赖与半胱氨酸残基的巯基（-SH）形成共价键；C797S 突变后，该亲核位点被丝氨酸的羟基取代，共价弹头无法再与之形成稳定的共价连接。\n\n据此推测，这一结论适用于所有依赖 C797 半胱氨酸进行共价修饰的第三代 EGFR-TKI。\n\n## 可执行建议\n\n若需克服 C797S 突变介导的耐药，应转向**别构结合口袋（Allosteric Pocket 4）**或采用**第四代双重变构调节机制**，以实现对该突变体的纳摩尔级抑制。",
+    "error": null
+   }
+  ]
+ }
+}

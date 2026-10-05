@@ -1,0 +1,21 @@
+{
+  "scope": "Python 调度器分配与在途任务；不包含模型推理、解析、磁盘 I/O 或总摄取耗时",
+  "results": [
+    {
+      "mode": "legacy",
+      "documents": 10000,
+      "concurrency": 3,
+      "live_document_tasks": 10000,
+      "scheduling_ms": 173.32,
+      "python_peak_bytes": 15187526
+    },
+    {
+      "mode": "bounded",
+      "documents": 10000,
+      "concurrency": 3,
+      "live_document_tasks": 3,
+      "scheduling_ms": 4.814,
+      "python_peak_bytes": 8164
+    }
+  ]
+}

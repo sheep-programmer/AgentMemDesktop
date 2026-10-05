@@ -1,0 +1,43 @@
+# 运行时数据
+data/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# 前端
+node_modules/
+apps/web/dist/
+apps/web/.vite/
+
+# 环境变量
+.env
+.env.local
+.env.*
+!.env.example
+!.env.*.example
+config/models.local.yaml
+
+# 录制与验收的临时产物
+test-results/
+playwright-report/
+*.log
+
+# 系统与编辑器
+.DS_Store
+.idea/
+.vscode/
+
+# 构建缓存
+*.tsbuildinfo

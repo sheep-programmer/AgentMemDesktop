@@ -1,0 +1,106 @@
+# AgentMem · 各家 Provider 的写法参考
+#
+# 这个文件**应用从不读取、也从不改写**，纯粹是给人看的模板库。
+# 要接哪一家，把对应的条目复制进 config/models.yaml 的 `providers:` 下面，
+# 填好 key、把 enabled 打开即可。
+#
+# 为什么模板放这儿而不是放 models.yaml 里：那个文件会被应用整体重写
+# （在「设置 → 模型」里改任何东西都会触发），注释一次都留不住。
+
+providers:
+  # ---------- 本地：Ollama（LLM） ----------
+  - id: local-qwen
+    kind: llm
+    adapter: openai_compatible
+    base_url: http://localhost:11434/v1
+    model: qwen3:14b
+    api_key: ollama          # Ollama 不校验，填任意非空值即可
+    enabled: true
+    extra:
+      timeout: 120
+
+  # ---------- 本地：sentence-transformers（Embedding / Rerank） ----------
+  # 权重首次使用时自动下载到 HuggingFace 缓存；需要 `uv sync --extra local`
+  - id: local-embedding
+    kind: embedding
+    adapter: sentence_transformers
+    model: BAAI/bge-m3
+    dimension: 1024          # 必须与模型实际维度一致，否则向量库会拒绝写入
+    device: auto             # auto | cpu | cuda | mps
+    enabled: true
+
+  - id: local-reranker
+    kind: rerank
+    adapter: sentence_transformers_ce
+    model: BAAI/bge-reranker-v2-m3
+    device: auto
+    enabled: true
+
+  # ---------- 云端：OpenAI 兼容 ----------
+  # 绝大多数服务商都是这一套，只换 base_url 与 model：
+  # DeepSeek / 智谱 / 通义 / 月之暗面 / 各类聚合站都适用
+  - id: deepseek-chat
+    kind: llm
+    adapter: openai_compatible
+    base_url: https://api.deepseek.com/v1
+    model: deepseek-chat
+    api_key: ${DEEPSEEK_API_KEY}   # 占位符写法，真实值放 .env
+    enabled: true
+    extra:
+      timeout: 120
+
+  - id: zhipu-glm
+    kind: llm
+    adapter: openai_compatible
+    base_url: https://open.bigmodel.cn/api/paas/v4
+    model: glm-4-plus
+    api_key: ${ZHIPU_API_KEY}
+    enabled: true
+
+  - id: dashscope-qwen
+    kind: llm
+    adapter: openai_compatible
+    base_url: https://dashscope.aliyuncs.com/compatible-mode/v1
+    model: qwen-plus
+    api_key: ${DASHSCOPE_API_KEY}
+    enabled: true
+
+  # ---------- 云端：Anthropic（独立协议，adapter 不同） ----------
+  - id: claude-sonnet
+    kind: llm
+    adapter: anthropic
+    base_url: https://api.anthropic.com
+    model: claude-sonnet-4-5
+    api_key: ${ANTHROPIC_API_KEY}
+    enabled: true
+
+  # ---------- 云端：Cohere 规范的 Rerank（如硅基流动） ----------
+  - id: siliconflow-rerank
+    kind: rerank
+    adapter: cohere_rerank
+    base_url: https://api.siliconflow.cn/v1
+    model: BAAI/bge-reranker-v2-m3
+    api_key: ${SILICONFLOW_API_KEY}
+    enabled: true
+
+# 角色绑定：业务代码只认角色名，不认具体 provider id。
+# 本地优先的典型配置——三类能力都走本机，数据不出机器：
+roles:
+  chat: local-qwen
+  fast: local-qwen
+  distill: local-qwen
+  judge: local-qwen
+  embedding: local-embedding
+  rerank: local-reranker
+
+# 降级链：主 provider 失败时按顺序切换，并记录告警。链条越短，失败时等得越少。
+fallbacks:
+  chat:
+    - deepseek-chat
+  fast: []
+  distill:
+    - deepseek-chat
+  judge:
+    - deepseek-chat
+  embedding: []
+  rerank: []

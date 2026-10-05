@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgentMem · 本地优先的 AI 专家知识库</title>
+    <script>
+      // 在 CSS 与 React 加载前恢复主题，避免浅色用户看到一帧深色界面。
+      try {
+        const saved = localStorage.getItem('agentmem_theme');
+        const dark = saved === 'dark' ||
+          (saved !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.toggle('dark', dark);
+        document.documentElement.style.colorScheme = dark ? 'dark' : 'light';
+      } catch (_) {
+        // 隐私模式或禁用存储时交给应用初始化主题。
+      }
+      // 标出平台：Windows 没有可用的中文衬线体（只有宋体，标题会发虚），
+      // 标题改用雅黑；快捷键提示也据此显示 Ctrl 而不是 ⌘。
+      try {
+        const platform = (navigator.userAgentData && navigator.userAgentData.platform) || navigator.platform || '';
+        if (/win/i.test(platform)) document.documentElement.classList.add('platform-win');
+        else if (/mac/i.test(platform)) document.documentElement.classList.add('platform-mac');
+      } catch (_) {
+        // 取不到平台信息时走默认字体栈
+      }
+    </script>
+  </head>
+  <body class="bg-background text-foreground antialiased selection:bg-primary/20 selection:text-primary">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

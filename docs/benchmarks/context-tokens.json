@@ -1,0 +1,245 @@
+{
+  "python_version": "3.12.14",
+  "tiktoken_version": "0.14.0",
+  "scope": "synthetic offline fixtures; content tokens exclude chat framing; not billing or answer-quality evaluation",
+  "model_calls": 0,
+  "compression_model_calls": 0,
+  "iterations": 20,
+  "results": [
+    {
+      "case": "short_fact",
+      "variants": {
+        "previous": {
+          "estimated_tokens": 466,
+          "content_tokens": {
+            "cl100k_base": 589,
+            "o200k_base": 446
+          },
+          "history_messages": 0,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 2,
+          "required_spans_total": 2,
+          "mean_assembly_ms": 0.069
+        },
+        "standard": {
+          "estimated_tokens": 466,
+          "content_tokens": {
+            "cl100k_base": 589,
+            "o200k_base": 446
+          },
+          "history_messages": 0,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 2,
+          "required_spans_total": 2,
+          "mean_assembly_ms": 0.119
+        },
+        "economy": {
+          "estimated_tokens": 466,
+          "content_tokens": {
+            "cl100k_base": 589,
+            "o200k_base": 446
+          },
+          "history_messages": 0,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 2,
+          "required_spans_total": 2,
+          "mean_assembly_ms": 0.105
+        }
+      }
+    },
+    {
+      "case": "middle_fact",
+      "variants": {
+        "previous": {
+          "estimated_tokens": 2337,
+          "content_tokens": {
+            "cl100k_base": 2869,
+            "o200k_base": 1981
+          },
+          "history_messages": 0,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 0,
+          "required_spans_total": 2,
+          "mean_assembly_ms": 0.973
+        },
+        "standard": {
+          "estimated_tokens": 2337,
+          "content_tokens": {
+            "cl100k_base": 2869,
+            "o200k_base": 1981
+          },
+          "history_messages": 0,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 0,
+          "required_spans_total": 2,
+          "mean_assembly_ms": 3.6
+        },
+        "economy": {
+          "estimated_tokens": 574,
+          "content_tokens": {
+            "cl100k_base": 725,
+            "o200k_base": 541
+          },
+          "history_messages": 0,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 2,
+          "required_spans_total": 2,
+          "mean_assembly_ms": 2.445
+        }
+      }
+    },
+    {
+      "case": "long_history",
+      "variants": {
+        "previous": {
+          "estimated_tokens": 3384,
+          "content_tokens": {
+            "cl100k_base": 4156,
+            "o200k_base": 2860
+          },
+          "history_messages": 8,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 3,
+          "required_spans_total": 3,
+          "mean_assembly_ms": 0.245
+        },
+        "standard": {
+          "estimated_tokens": 2656,
+          "content_tokens": {
+            "cl100k_base": 3265,
+            "o200k_base": 2257
+          },
+          "history_messages": 6,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 3,
+          "required_spans_total": 3,
+          "mean_assembly_ms": 0.732
+        },
+        "economy": {
+          "estimated_tokens": 1200,
+          "content_tokens": {
+            "cl100k_base": 1483,
+            "o200k_base": 1051
+          },
+          "history_messages": 2,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 3,
+          "required_spans_total": 3,
+          "mean_assembly_ms": 0.789
+        }
+      }
+    },
+    {
+      "case": "large_supplements",
+      "variants": {
+        "previous": {
+          "estimated_tokens": 10319,
+          "content_tokens": {
+            "cl100k_base": 12759,
+            "o200k_base": 8734
+          },
+          "history_messages": 8,
+          "evidence_count": 1,
+          "card_count": 4,
+          "insight_count": 6,
+          "required_spans_kept": 3,
+          "required_spans_total": 3,
+          "mean_assembly_ms": 1.357
+        },
+        "standard": {
+          "estimated_tokens": 4884,
+          "content_tokens": {
+            "cl100k_base": 6053,
+            "o200k_base": 4180
+          },
+          "history_messages": 6,
+          "evidence_count": 1,
+          "card_count": 3,
+          "insight_count": 3,
+          "required_spans_kept": 3,
+          "required_spans_total": 3,
+          "mean_assembly_ms": 2.957
+        },
+        "economy": {
+          "estimated_tokens": 2112,
+          "content_tokens": {
+            "cl100k_base": 2687,
+            "o200k_base": 1919
+          },
+          "history_messages": 2,
+          "evidence_count": 1,
+          "card_count": 1,
+          "insight_count": 5,
+          "required_spans_kept": 3,
+          "required_spans_total": 3,
+          "mean_assembly_ms": 1.925
+        }
+      }
+    },
+    {
+      "case": "structured_evidence",
+      "variants": {
+        "previous": {
+          "estimated_tokens": 455,
+          "content_tokens": {
+            "cl100k_base": 578,
+            "o200k_base": 440
+          },
+          "history_messages": 0,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 2,
+          "required_spans_total": 2,
+          "mean_assembly_ms": 0.055
+        },
+        "standard": {
+          "estimated_tokens": 455,
+          "content_tokens": {
+            "cl100k_base": 578,
+            "o200k_base": 440
+          },
+          "history_messages": 0,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 2,
+          "required_spans_total": 2,
+          "mean_assembly_ms": 0.104
+        },
+        "economy": {
+          "estimated_tokens": 455,
+          "content_tokens": {
+            "cl100k_base": 578,
+            "o200k_base": 440
+          },
+          "history_messages": 0,
+          "evidence_count": 1,
+          "card_count": 0,
+          "insight_count": 0,
+          "required_spans_kept": 2,
+          "required_spans_total": 2,
+          "mean_assembly_ms": 0.115
+        }
+      }
+    }
+  ]
+}

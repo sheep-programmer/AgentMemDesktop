@@ -1,0 +1,10 @@
+export * from './client';
+export * from './sse';
+export * from './types';
+export { spaceService, isMockMode } from './services/spaces';
+export { providerService } from './services/providers';
+export { documentService } from './services/documents';
+export { chatService } from './services/chat';
+export { memoryService } from './services/memory';
+export { evolveService } from './services/evolve';
+export { expertiseService } from './services/expertise';
